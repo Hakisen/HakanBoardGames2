@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33318.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HakanBoardGames.Client", "HakanBoardGames\Client\HakanBoardGames.Client.csproj", "{CB5C7A62-B2F6-4628-9846-17A24860D144}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HakanBoardGames.Server", "HakanBoardGames\Server\HakanBoardGames.Server.csproj", "{D7CF7588-942B-4551-9D15-00C10B3C7402}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HakanBoardGames.Shared", "HakanBoardGames\Shared\HakanBoardGames.Shared.csproj", "{C24B0B95-B8A7-4DCA-9B0E-8E2D50F018FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB5C7A62-B2F6-4628-9846-17A24860D144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5C7A62-B2F6-4628-9846-17A24860D144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5C7A62-B2F6-4628-9846-17A24860D144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5C7A62-B2F6-4628-9846-17A24860D144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CF7588-942B-4551-9D15-00C10B3C7402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CF7588-942B-4551-9D15-00C10B3C7402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CF7588-942B-4551-9D15-00C10B3C7402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CF7588-942B-4551-9D15-00C10B3C7402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24B0B95-B8A7-4DCA-9B0E-8E2D50F018FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24B0B95-B8A7-4DCA-9B0E-8E2D50F018FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24B0B95-B8A7-4DCA-9B0E-8E2D50F018FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24B0B95-B8A7-4DCA-9B0E-8E2D50F018FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {370F4645-A3DF-469B-999F-3600242E02B2}
+	EndGlobalSection
+EndGlobal

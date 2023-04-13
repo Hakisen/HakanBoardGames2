@@ -1,0 +1,128 @@
+﻿@page "/BoardGames"
+@inject IDialogService DialogService
+@inject IBoardGameService BoardGameService
+@implements IDisposable
+
+<PageTitle>BoardGames</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">BoardGames</MudText>
+
+@if (BoardGameService.ShowMudProgressCircular)
+{
+    <div>
+        <div Class="d-inline-flex pa-4">
+            <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+        </div>
+    </div>
+}
+
+@if (BoardGameService.ShowMudAlert)
+{
+    <MudAlert class="mb-2"
+          Severity=BoardGameService.MudBlazorSeverity
+          ContentAlignment="HorizontalAlignment.Left"
+          ShowCloseIcon="true"
+          CloseIconClicked="(() => CloseMudAlert(false))">
+        @BoardGameService.Message
+    </MudAlert>
+}
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Download">Download and save BoardGames</MudButton>
+
+<MudTable Items="BoardGameService.BoardGames" Hover="true" Bordered="true" Striped="true" SortLabel="Sort By" Elevation="0">
+    <HeaderContent>
+        <MudTh><MudTableSortLabel InitialDirection="SortDirection.Descending" SortBy="new Func<BGBoardGame, object>(x=>x.BoardGameId!)">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.Name!)">Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.Releasd!)">Releasd</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.Tagline!)">Tagline</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.SavedToDatabaseDate)">Saved date</MudTableSortLabel></MudTh>
+        <MudTh>Delete</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.BoardGameId</MudTd>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Releasd">@context.Releasd</MudTd>
+        <MudTd DataLabel="Tagline">@context.Tagline</MudTd>
+        <MudTd DataLabel="Saved date">@context.SavedToDatabaseDate</MudTd>
+        <MudTd>
+            <MudTooltip Text="Delete BoardGame">
+                <MudIconButton @onclick="@(async () => await DeleteBoardGame(@context.Id))"
+                               Icon="@Icons.Material.Filled.DeleteForever"
+                               Color="Color.Error"
+                               Variant="Variant.Filled">
+                </MudIconButton>
+            </MudTooltip>
+        </MudTd>
+
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[]{10, 50, 100}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        BoardGameService.BoardGamesChanged += StateHasChanged;
+
+        await GetBoardGames();
+    }
+
+    private async Task GetBoardGames()
+    {
+        BoardGameService.ShowMudAlert = true;
+        await BoardGameService.GetBoardGames();
+    }
+
+    private async Task Download()
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", $"Are you sure you want to download and save BoardGame data to database?");
+        parameters.Add("ButtonText", "Yes");
+        parameters.Add("Color", Color.Success);
+
+        var dialogresult = DialogService.Show<DialogConfirm>("Confirm", parameters);
+        var result = await dialogresult.Result;
+        if (!result.Canceled && bool.TryParse(result.Data.ToString(), out bool resultbool))
+        {
+            await BoardGameService.DownlodAndSaveBoardGame();
+        }
+        else
+        {
+            BoardGameService.ShowMudAlert = true;
+            BoardGameService.MudBlazorSeverity = Severity.Error;
+            BoardGameService.Message = "Operation was cancelled!";
+        }
+    }
+
+    async Task DeleteBoardGame(Guid id)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", $"Do you want to delete this record?");
+        parameters.Add("ButtonText", "Yes");
+        parameters.Add("Color", Color.Success);
+
+        var dialogresult = DialogService.Show<DialogConfirm>("Confirm", parameters);
+        var result = await dialogresult.Result;
+        if (!result.Canceled && bool.TryParse(result.Data.ToString(), out bool resultbool))
+        {
+            await BoardGameService.DeleteBoardGame(id);
+        }
+        else
+        {
+            BoardGameService.ShowMudAlert = true;
+            BoardGameService.MudBlazorSeverity = Severity.Error;
+            BoardGameService.Message = "Operation was cancelled!";
+        }
+    }
+
+    private void CloseMudAlert(bool value)
+    {
+        BoardGameService.ShowMudAlert = false;
+    }
+
+    public void Dispose()
+    {
+        BoardGameService.BoardGamesChanged -= StateHasChanged;
+    }
+}
