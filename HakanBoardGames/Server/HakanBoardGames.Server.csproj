@@ -8,14 +8,10 @@
 
 	<ItemGroup>
 	  <Content Remove="boardgames123.json" />
-	  <Content Remove="Data\boardgames123.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="boardgames123.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Data\boardgames123.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	</ItemGroup>

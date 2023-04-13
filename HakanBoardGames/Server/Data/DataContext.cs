@@ -12,63 +12,6 @@ namespace MudBlazorVisualDNA.Server.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // exempel Fluent Api
-
-            //var familyTree = modelBuilder.Entity<FTFamilyTree>();
-            //familyTree.HasKey(b => b.FamilyTreeId);
-            //familyTree.Property(b => b.FamilyTreeId).UseIdentityColumn();
-            //familyTree.HasMany(t => t.Haplogroups)
-            //    .WithOne(c => c.FamilyTree)
-            //    .HasForeignKey(c => c.FamilyTreeId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-            //familyTree.HasMany(t => t.Countries)
-            //    .WithOne(c => c.FamilyTree)
-            //    .HasForeignKey(c => c.FamilyTreeId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
-            //var haplogroup = modelBuilder.Entity<FTHaplogroup>();
-            //haplogroup.HasKey(b => b.HaplogroupId);
-            //haplogroup.Property(b => b.HaplogroupId).UseIdentityColumn();
-            //haplogroup.HasMany(t => t.CountryCounts)
-            //   .WithOne(c => c.Haplogroup)
-            //   .HasForeignKey(c => c.FTCountryCountId)
-            //   .OnDelete(DeleteBehavior.Cascade);
-            //haplogroup.HasMany(t => t.Variants)
-            //    .WithOne(c => c.Haplogroup)
-            //    .HasForeignKey(c => c.FTVariantId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-            //haplogroup.HasMany(t => t.Surnames)
-            //    .WithOne(c => c.Haplogroup)
-            //    .HasForeignKey(c => c.FTSurnameId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-            //haplogroup.HasMany(t => t.Children)
-            //    .WithOne(c => c.Haplogroup)
-            //    .HasForeignKey(c => c.FTChildId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<FTCountryCount>()
-            //  .HasOne(p => p.Haplogroup)
-            //  .WithMany(b => b.CountryCounts)
-            //  .HasForeignKey(p => p.HaplogroupId)
-            //  .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<FTVariant>()
-            //  .HasOne(p => p.Haplogroup)
-            //  .WithMany(b => b.Variants)
-            //  .HasForeignKey(p => p.HaplogroupId)
-            //  .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<FTSurname>()
-            //  .HasOne(p => p.Haplogroup)
-            //  .WithMany(b => b.Surnames)
-            //  .HasForeignKey(p => p.HaplogroupId)
-            //  .OnDelete(DeleteBehavior.Cascade);
-
-            //modelBuilder.Entity<FTChild>()
-            //  .HasOne(p => p.Haplogroup)
-            //  .WithMany(b => b.Children)
-            //  .HasForeignKey(p => p.HaplogroupId)
-            //  .OnDelete(DeleteBehavior.Cascade);
 
         }
 

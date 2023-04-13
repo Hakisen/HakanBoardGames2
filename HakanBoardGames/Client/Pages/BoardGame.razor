@@ -6,6 +6,7 @@
 <PageTitle>BoardGames</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">BoardGames</MudText>
+<Component></Component>
 
 @if (BoardGameService.ShowMudProgressCircular)
 {
@@ -36,7 +37,8 @@
         <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.Releasd!)">Releasd</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.Tagline!)">Tagline</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<BGBoardGame, object>(x=>x.SavedToDatabaseDate)">Saved date</MudTableSortLabel></MudTh>
-        <MudTh>Delete</MudTh>
+@*        <MudTh><MudTableSortLabel SortBy="new Func<BGCategory, object>(x=>x.Category)">Category</MudTableSortLabel></MudTh>
+*@        <MudTh>Delete</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.BoardGameId</MudTd>
@@ -44,7 +46,8 @@
         <MudTd DataLabel="Releasd">@context.Releasd</MudTd>
         <MudTd DataLabel="Tagline">@context.Tagline</MudTd>
         <MudTd DataLabel="Saved date">@context.SavedToDatabaseDate</MudTd>
-        <MudTd>
+@*        <MudTd DataLabel="Saved date">@context.Categories.Category</MudTd>
+*@        <MudTd>
             <MudTooltip Text="Delete BoardGame">
                 <MudIconButton @onclick="@(async () => await DeleteBoardGame(@context.Id))"
                                Icon="@Icons.Material.Filled.DeleteForever"
